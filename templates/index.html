@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Flask</title>
+</head>
+<body>
+    <h1>Usuarios</h1>   
+    
+    <form action="{{ url_for('agregar') }}" method="POST">
+        <input type="text" name="cedula" placeholder="Cedula">
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apellido" placeholder="Apellido">
+        <button type="submit">Agregar</button>
+    </form>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>{{ usuario[0] }} - {{ usuario[1] }} - {{ usuario[2] }} 
+            <a href="{{ url_for('eliminar', cedula=usuario[0]) }}">Eliminar</a>
+            <a href="{{ url_for('editar', cedula=usuario[0]) }}">Editar</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('logout') }}" method="POST">
+        <button type="submit">Cerrar sesión</button>
+    </form>
+</body>
+</html>

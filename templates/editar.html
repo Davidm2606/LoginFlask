@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    <h1>Editar Usuario</h1>
+    <form action="{{ url_for('editar', cedula=usuario[0]) }}" method="POST">
+        <input type="text" name="cedula" placeholder="Cedula" value="{{ usuario[0] }}" readonly>
+        <input type="text" name="nombre" placeholder="Nombre" value="{{ usuario[1] }}">
+        <input type="text" name="apellido" placeholder="Apellido" value="{{ usuario[2] }}">
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="{{ url_for('index') }}">Volver a la lista de usuarios</a>
+</body>
+</html>
